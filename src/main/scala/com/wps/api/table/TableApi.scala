@@ -6,7 +6,7 @@ import org.apache.flink.table.api.{DataTypes, EnvironmentSettings, Table, TableE
 import org.apache.flink.table.api.scala._
 import org.apache.flink.table.descriptors.{Csv, FileSystem, Kafka, OldCsv, Schema}
 
-object TableApiTest {
+object TableApi {
 
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
