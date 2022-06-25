@@ -1,6 +1,7 @@
 package com.wps.flink.utils
 
 import com.google.gson.JsonObject
+import org.apache.flink.api.scala.typeutils.TraversableSerializer.Key
 import org.apache.kafka.common.protocol.types.Field.Str
 
 import java.text.SimpleDateFormat
@@ -10,7 +11,8 @@ import java.util.{Date, HashMap, Map, TimeZone}
 object JsonUtils {
 
   def main(args: Array[String]): Unit = {
-
+    val date: Date = parseDate("2022-06-25 11:00:00.020")
+    print(date.getTime)
   }
 
   def jsonObject2HashMap(jsonObj: JsonObject,
@@ -27,9 +29,54 @@ object JsonUtils {
           val fieldFromJson = parseDate(jsonObj,clumnName.toUpperCase)
           data.put(clumnName.toLowerCase(),fieldFromJson.asInstanceOf[Object])
         }
+        case "long" => {
+          val fieldFromJson = parseLong(jsonObj,clumnName.toUpperCase)
+          data.put(clumnName.toLowerCase(),fieldFromJson.asInstanceOf[Object])
+        }
+        case "double" => {
+          val fieldFromJson = parseDouble(jsonObj,clumnName.toUpperCase())
+          data.put(clumnName.toLowerCase( ),fieldFromJson.asInstanceOf[Object])
+        }
+        case "boolean" => {
+          val fieldFromJson = parseBoolean(jsonObj,clumnName.toUpperCase())
+          data.put(clumnName.toLowerCase(),fieldFromJson.asInstanceOf[Object])
+        }
+        case _=>{
+          val fieldFromJson = parseString(jsonObj,clumnName.toUpperCase())
+          data.put(clumnName.toLowerCase(),fieldFromJson.asInstanceOf[Object])
+        }
       }
     }
     data
+  }
+
+  def parseString(jsonObject: JsonObject,key: String):String = {
+    var result = if ((jsonObject.get(key)!=null) && (!jsonObject.get(key).isJsonNull))
+      jsonObject.get(key).getAsString.replaceAll("\"","")
+    else ""
+    result
+  }
+
+  def parseBoolean(jsonObject: JsonObject,key:String  ):Double = {
+    val result:Double = if (jsonObject.get(key)!=null && !jsonObject.get(key).isJsonNull && jsonObject.get(key).isJsonPrimitive)
+      jsonObject.get(key  ).getAsJsonPrimitive.getAsNumber.doubleValue()
+    else 0L
+    result
+  }
+
+  def parseDouble(jsonObject: JsonObject,key:String):Double = {
+    val result:Double = if (jsonObject.get(key)!=null && !jsonObject.get(key).isJsonNull && jsonObject.get(key).isJsonPrimitive)
+      jsonObject.get(key).getAsJsonPrimitive.getAsNumber.doubleValue()
+    else 0L
+    result
+  }
+
+  def parseLong(jsonObject: JsonObject,key:String):Double = {
+    var result = 0L
+    if ((jsonObject.get(key)!=null) && (!jsonObject.get(key ).isJsonNull && jsonObject.get(key).isJsonPrimitive)){
+      result = jsonObject.get(key).getAsJsonPrimitive.getAsNumber.doubleValue().toLong
+    }
+    result
   }
 
   def parseDate(jsonObject: JsonObject,key:String):Date = {
