@@ -52,7 +52,8 @@
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-scala_2.11</artifactId>
-            <version>1.10.0</version>
+            <version>1.6.0</version>
+<!--            <version>1.10.0</version>-->
         </dependency>
 
         <dependency>
@@ -69,8 +70,9 @@
 
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
-            <version>1.10.0</version>
+            <artifactId>flink-connector-kafka-0.10_2.11</artifactId>
+            <version>1.6.0</version>
+<!--            <version>1.10.0</version>-->
         </dependency>
 
         <dependency>
@@ -114,6 +116,28 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-csv</artifactId>
             <version>1.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch6_2.11</artifactId>
+            <version>1.10.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>elasticsearch-rest-high-level-client</groupId>
+                    <artifactId>org.elasticsearch.client</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>slf4j-api</groupId>
+                    <artifactId>org.slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
