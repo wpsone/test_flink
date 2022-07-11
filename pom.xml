@@ -64,6 +64,12 @@
 
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-jdbc_2.11</artifactId>
+            <version>1.13.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-statebackend-rocksdb_2.11</artifactId>
             <version>1.10.0</version>
         </dependency>
@@ -138,6 +144,18 @@
                     <artifactId>org.slf4j</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.example</groupId>-->
+<!--            <artifactId>spark_test</artifactId>-->
+<!--            <version>1.8.0</version>-->
+<!--        </dependency>-->
+
+        <!--commons-beanutils是Apache开源组织提供的用于操作JAVA BEAN的工具包。使用commons-beanutils，我们可以很方便的对bean对象的属性进行操作-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
         </dependency>
     </dependencies>
 
