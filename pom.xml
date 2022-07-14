@@ -74,11 +74,17 @@
             <version>1.10.0</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-connector-kafka-0.10_2.11</artifactId>-->
+<!--            <version>1.6.0</version>-->
+<!--&lt;!&ndash;            <version>1.10.0</version>&ndash;&gt;-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.10_2.11</artifactId>
-            <version>1.6.0</version>
-<!--            <version>1.10.0</version>-->
+            <artifactId>flink-connector-kafka_2.11</artifactId>
+            <version>1.13.2</version>
         </dependency>
 
         <dependency>
@@ -156,6 +162,11 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
+            <version>1.9.0</version>
         </dependency>
     </dependencies>
 
